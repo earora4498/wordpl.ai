@@ -14,10 +14,10 @@ if gameChoice == '1':
 
 	print("Your taboo phrase is: " + taboo)
 
-	#read words from file and organize them into a map
 	file = open("5000words.txt", "r")
 	text = file.read()
 	myList = text.split()
+
 	first500 = myList[0:499]
 	words = set(first500)
 
@@ -34,7 +34,28 @@ if gameChoice == '1':
 	print("That's a valid phrase!")
 elif gameChoice == '2':
 #Being Extra
-	print("TODO")
+
+	file = open("tabooWords.txt", "r")
+	text = file.read()
+	myList = text.split()
+	taboo = random.choice(myList)
+
+	print("Your taboo phrase is: " + taboo)
+
+	file = open("30000words.txt", "r")
+	text = file.read()
+	myList = text.split()
+
+	words = set(myList)
+
+	phraseInput = raw_input("Enter a phrase: ")
+	phrase = phraseInput.split()
+
+	for word in phrase:
+		if (word in words):
+			print(myList.index(word))
+
+
 elif gameChoice == '3':
 #Up/Down
 	print("TODO")
