@@ -10,4 +10,8 @@ class Player:
     username
     score
     teammate
+    isPlayersTurn
+
+
+
 
