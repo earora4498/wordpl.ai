@@ -1,19 +1,61 @@
 import sys
+import random
 
-#read words from file and organize them into a map
-file = open("5000words.txt", "r")
-text = file.read()
-myList = text.split()
-words = set(myList)
+gameChoice = raw_input("Choose a game!\n\nType '1' for Taboo\nType '2' for Being Extra\nType '3' for Up/Down\n")
 
-#get a phrase from the user
-input = raw_input("Enter a phrase: ")
-phrase = input.split()
 
-#check if every word in phrase is also in the map
-for word in phrase:
-	if (word not in words):
-		print("Oh no! The word \'" + word + "\' is not in the 5000 most frequent words!")
-		sys.exit(0)
+if gameChoice == '1':
+#Taboo
 
-print("That's a valid phrase!")
+	file = open("tabooWords.txt", "r")
+	text = file.read()
+	myList = text.split()
+	taboo = random.choice(myList)
+
+	print("Your taboo phrase is: " + taboo)
+
+	file = open("5000words.txt", "r")
+	text = file.read()
+	myList = text.split()
+
+	first500 = myList[0:499]
+	words = set(first500)
+
+	#get a phrase from the user
+	phraseInput = raw_input("Enter a phrase: ")
+	phrase = phraseInput.split()
+
+	#check if every word in phrase is also in the map
+	for word in phrase:
+		if (word not in words):
+			print("Oh no! The word \'" + word + "\' is not in the 500 most frequent words!")
+			sys.exit(0)
+
+	print("That's a valid phrase!")
+elif gameChoice == '2':
+#Being Extra
+
+	file = open("tabooWords.txt", "r")
+	text = file.read()
+	myList = text.split()
+	taboo = random.choice(myList)
+
+	print("Your taboo phrase is: " + taboo)
+
+	file = open("30000words.txt", "r")
+	text = file.read()
+	myList = text.split()
+
+	words = set(myList)
+
+	phraseInput = raw_input("Enter a phrase: ")
+	phrase = phraseInput.split()
+
+	for word in phrase:
+		if (word in words):
+			print(myList.index(word))
+
+
+elif gameChoice == '3':
+#Up/Down
+	print("TODO")
